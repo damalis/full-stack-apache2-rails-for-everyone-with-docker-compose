@@ -5,7 +5,7 @@ services:
     rails:
         depends_on:
             - database
-        build: ./docker/4.1
+        build: ./docker/7.0
         #image: 'damalis/rails:7.0'
         container_name: rails
         networks:
@@ -207,7 +207,7 @@ volumes:
         driver: local
         driver_opts:
             type: none
-            device: ${DIRECTORY_PATH}/rails/app
+            device: ${DIRECTORY_PATH}/rails
             o: bind
     db:
         name: ${DATABASE_CONT_NAME}-data
