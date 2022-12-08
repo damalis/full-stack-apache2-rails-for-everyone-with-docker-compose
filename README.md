@@ -212,7 +212,11 @@ docker compose up -d
 
 ### Website
 
-You should see the "Yay! You'are on Rails!" page in your browser. If not, please check if your installation satisfies Rails's requirements.
+You should see the "Rails version: ... and Ruby version: ..." page in your browser. If not, please check if your installation satisfies Rails's requirements.
+
+Blocked host: must add the contents of config/environments/development.rb with the following:
+
+```config.hosts << "example.com"```
 
 ```
 https://example.com
@@ -229,12 +233,24 @@ add or remove code in the ```./webserver/extra/httpd-ssl.conf``` file for custom
 
 #### Database
 
+Replace the contents of config/database.yml with the following:
+
 ```
-example:
-	database: database
-	adapter: mysql2
-	username: ${DB_USER}
-	password: ${DB_PASSWORD}
+default: &default
+  adapter: mysql2
+  host: database
+  username: ${DB_USER}
+  password: ${DB_PASSWORD}
+  pool: 5
+
+development:
+  <<: *default
+  database: ${DB_NAME}
+
+
+test:
+  <<: *default
+  database: myapp_test
 ```
 
 [https://guides.rubyonrails.org/active_record_multiple_databases.html#setting-up-your-application](https://guides.rubyonrails.org/active_record_multiple_databases.html#setting-up-your-application)
