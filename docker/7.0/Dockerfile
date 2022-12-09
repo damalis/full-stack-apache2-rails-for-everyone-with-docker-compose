@@ -3,7 +3,6 @@ FROM ruby:3.1
 RUN apt-get update -qq && apt-get install -y nodejs
 
 COPY Gemfile /app/Gemfile
-COPY Gemfile.lock /app/Gemfile.lock
 
 WORKDIR /app
 
