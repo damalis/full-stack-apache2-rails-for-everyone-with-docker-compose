@@ -27,7 +27,7 @@ services:
             TZ: '${LOCAL_TIMEZONE}'
         labels:            
             - 'docker-volume-backup.stop-during-backup=true'
-        command: bash -c "if [ -f \"/app/Rakefile\" ]; then bundle update && rails restart; else rails new . && rails s -p 9000 -b '0.0.0.0'; fi"
+        command: bash -c "if [ -f \"/app/Gemfile.lock\" ]; then bundle install; else rails new . && echo -en \"gem 'redis', '~> 5.0', '>= 5.0.5'\\ngem 'mysql2', '~> 0.5.4'\\n\" >> /app/Gemfile; fi && rails s -p 9000 -b '0.0.0.0'"
 
     webserver:
         depends_on:
