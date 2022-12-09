@@ -216,7 +216,7 @@ You should see the "Rails version: ... and Ruby version: ..." page in your brows
 
 Blocked host: must add the contents of config/environments/development.rb with the following:
 
-```config.hosts << "example.com"```
+```config.hosts << "example.com"``` then ```docker container restart rails```
 
 ```
 https://example.com
