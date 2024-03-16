@@ -291,19 +291,21 @@ Replace the contents of ```./rails/config/database.yml``` with the following:
 default: &default
   adapter: mysql2
   host: database
-  username: ${DB_USER}
-  password: ${DB_PASSWORD}
+  username: {DB_USER}
+  password: {DB_PASSWORD}
   pool: 5
 
 development:
   <<: *default
-  database: ${DB_NAME}
+  database: {DB_NAME}
 
 
 test:
   <<: *default
   database: myapp_test
 ```
+
+then ```docker container restart rails```
 
 [https://guides.rubyonrails.org/active_record_multiple_databases.html#setting-up-your-application](https://guides.rubyonrails.org/active_record_multiple_databases.html#setting-up-your-application)
 
@@ -316,6 +318,8 @@ test:
 add the configuration in the relevant ```./rails/config/environments/*.rb``` file:
 
 ```config.cache_store = :redis_cache_store, { url: 'redis' }```
+
+then ```docker container restart rails```
 
 [https://guides.rubyonrails.org/caching_with_rails.html#activesupport-cache-rediscachestore](https://guides.rubyonrails.org/caching_with_rails.html#activesupport-cache-rediscachestore)
 
