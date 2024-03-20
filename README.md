@@ -266,7 +266,7 @@ docker compose up -d
 
 You should see the "Rails version: ... and Ruby version: ..." page in your browser. If not, please check if your installation satisfies Rails's requirements.
 
-Blocked host: must add the contents of ```./rails/config/environments/development.rb``` with the following:
+Blocked hosts: must add the contents of ```./rails/config/environments/development.rb``` with the following:
 
 ```config.hosts << "example.com"``` then ```docker container restart rails```
 
@@ -315,7 +315,7 @@ then ```docker container restart rails```
 
 #### Redis
 
-add the configuration in the relevant ```./rails/config/environments/*.rb``` file:
+add the configuration in the relevant ```./rails/config/environments/development.rb``` file:
 
 ```config.cache_store = :redis_cache_store, { url: 'redis' }```
 
